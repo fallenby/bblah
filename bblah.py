@@ -15,11 +15,11 @@ wordlist = args.wordlist
 stop_on_success = not args.no_stop_on_success
 
 if not url:
-    url = input("Enter the base URP supporting HTTP Basic Authentication to be bruteforced: ");
+    url = input("Enter the base URP supporting HTTP Basic Authentication to be bruteforced: ")
 if not username:
-    username = input("Enter the username to be bruteforced: ");
+    username = input("Enter the username to be bruteforced: ")
 if not wordlist:
-    wordlist = input("Enter the wordlist file to be used as a list of passwords (one password per line): ");
+    wordlist = input("Enter the wordlist file to be used as a list of passwords (one password per line): ")
 
 found = False
 valid_logins = []
@@ -32,7 +32,7 @@ with open(wordlist, 'r') as f:
             continue
         if args.verbose:
             print("Trying \033[94m\033[1m", username, "\033[0m : \033[93m\033[1m", line.strip(), "\033[0m ... ", sep='', end='')
-        result = requests.get(url, auth=(username, line.strip()));
+        result = requests.get(url, auth=(username, line.strip()))
         if (result.status_code == 200):
             if args.verbose:
                 print("\033[92m\033[1msuccess!\033[0m")
